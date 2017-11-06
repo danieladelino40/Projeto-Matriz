@@ -1,16 +1,97 @@
 #include <stdio.h>
 
-void preenchiemto_definido (float A[20][20],int linhas,int colunas){
+void multiplicar(float A[50][50],float B[50][50],float C[50][50], int nlA[1], int nlB[1], int ncA[1], int ncB[1],int nlC[1],int ncC[1]){
+	int i,j,k;
+	
+	if(ncA[0]==nlB[0])
+	{
+		nlC[0]=nlA[0];
+		ncC[0]=ncB[0];
+	
+	for(i=0;i<nlC[0];i++)
+	{
+		for(j=0;j<ncC[0];j++)
+		{
+			C[i][j]=0;
+		}
+	}
+	
+	
+	
+	for(i=0; i<nlC[0];i++)
+	{
+		for(j=0;j<ncC[0];j++)
+		{
+			for(k=0;k<ncA[0];k++)
+			{
+				C[i][j] = C[i][j] + A[i][k]*B[k][j];
+			}
+		}
+	}
+	
+	}
+}
+void subtrair(float A[50][50],float B[50][50],float C[50][50], int nlA[1], int nlB[1], int ncA[1], int ncB[1],int nlC[1],int ncC[1]){
+    int i,j;
+    if(nlA[0] == nlB[0] && ncA[0] == ncB[0]){
+        for(i=0;i<nlA[0];i++)
+		{
+            for(j=0;j<ncA[0];j++)
+			{
+                C[i][j]=A[i][j] - B[i][j];
+            }
+        }
+        nlC[0] = nlA[0];
+        ncC[0] = ncA[0];
+
+    }else{
+        printf("Nao foi possível subtrair!");
+    }
+}
+void somar(float A[50][50],float B[50][50],float C[50][50], int nlA[1], int nlB[1], int ncA[1], int ncB[1],int nlC[1],int ncC[1]){
+    int i,j;
+    if(nlA[0] == nlB[0] && ncA[0] == ncB[0]){
+        for(i=0;i<nlA[0];i++)
+		{
+            for(j=0;j<ncA[0];j++)
+			{
+                C[i][j]=A[i][j] + B[i][j];
+            }
+        }
+        nlC[0] = nlA[0];
+        ncC[0] = ncA[0];
+
+    }else{
+        printf("Nao foi possível somar as matrizes!");
+    }
+}
+void definir_tamA(int linhas [1],int colunas [1]){
+    printf("Digite a quantidade de linhas da matriz A: ");
+    scanf("%d", &linhas[0]);
+    printf("Digite a quantidade de colunas da matriz A: ");
+    scanf("%d", &colunas[0]);
+
+
+}
+void definir_tamB(int linhas [1],int colunas [1]){
+    printf("Digite a quantidade de linhas da matriz B: ");
+    scanf("%d", &linhas[0]);
+    printf("Digite a quantidade de colunas da matriz B: ");
+    scanf("%d", &colunas[0]);
+
+
+}
+void preenchiemto_definido (float A[50][50],int linhas[1],int colunas[1]){
     int i,j;
 
-    for(i=0;i<linhas;i++){
-        for(j=0;j<colunas;j++){
-            printf("Digite o valor do elemento da matriz na posiÃ§Ã£o [%d][%d]\n",i,j);
+    for(i=0;i<linhas[0];i++){
+        for(j=0;j<colunas[0];j++){
+            printf("Digite o valor do elemento da matriz na posicao [%d][%d]\n",i,j);
             scanf("%f",&A[i][j]);
         }
     }
 }
-void preenchimento_aleatorio (float B[20][20],int linha,int coluna ){
+void preenchimento_aleatorio (float B[50][50],int linha,int coluna ){
 
     int menor,maior;
     int i,j;
@@ -45,9 +126,37 @@ void imprimir_menu(void){
            "(13) Sair\n");
 
 }
-main(){
-    int matA [2][2];
-    imprimir_menu();
-    preenchiemto_definido(matA, 2,2);
+void mostrar(float A[50][50], int linha[1], int coluna[1]){
+	int i,j;
+	for(i=0;i<linha[0];i++)
+	{
+		for(j=0;j<coluna[0];j++)
+		{
+			printf("%2.2f ", A[i][j]);
+		}printf("\n");
+	}
+}
 
+main(){
+    int i, j;
+    float matA [50][50];
+    float matB [50][50];
+    float matC [50][50];
+    int linhaA[1], colunaA[1], linhaB[1], colunaB[1], linhaC[1], colunaC[1];
+    
+    definir_tamA(linhaA,colunaA);
+    definir_tamB(linhaB,colunaB);
+    
+	preenchiemto_definido(matA, linhaA,colunaA);
+	preenchiemto_definido(matB, linhaB,colunaB);
+	
+	mostrar(matA,linhaA, colunaA);
+	printf("\n");
+	mostrar(matB,linhaB, colunaB);
+	printf("\n");
+	
+	multiplicar(matA, matB, matC, linhaA, linhaB, colunaA, colunaB, linhaC, colunaC);
+	
+	
+	mostrar(matC, linhaC,colunaC);
 }
