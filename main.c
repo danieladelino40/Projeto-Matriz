@@ -30,6 +30,7 @@ void multiplicar(float A[50][50],float B[50][50],float C[50][50], int nlA[1], in
 	}
 	
 	}
+	system("cls");
 }
 void subtrair(float A[50][50],float B[50][50],float C[50][50], int nlA[1], int nlB[1], int ncA[1], int ncB[1],int nlC[1],int ncC[1]){
     int i,j;
@@ -47,6 +48,7 @@ void subtrair(float A[50][50],float B[50][50],float C[50][50], int nlA[1], int n
     }else{
         printf("Nao foi possível subtrair!");
     }
+    system("cls");
 }
 void somar(float A[50][50],float B[50][50],float C[50][50], int nlA[1], int nlB[1], int ncA[1], int ncB[1],int nlC[1],int ncC[1]){
     int i,j;
@@ -64,22 +66,47 @@ void somar(float A[50][50],float B[50][50],float C[50][50], int nlA[1], int nlB[
     }else{
         printf("Nao foi possível somar as matrizes!");
     }
+    system("cls");
 }
 void definir_tamA(int linhas [1],int colunas [1]){
     printf("Digite a quantidade de linhas da matriz A: ");
     scanf("%d", &linhas[0]);
+    
+    while(linhas[0]<1||linhas[0]>50)
+	{
+		printf("Insira um valor no intervalo de 1 a 50: ");
+		scanf("%d", &linhas[0]);
+	}
     printf("Digite a quantidade de colunas da matriz A: ");
     scanf("%d", &colunas[0]);
+    
+    while(colunas[0]<1||colunas[0]>50)
+	{
+		printf("Insira um valor no intervalo de 1 a 50: ");
+		scanf("%d", &colunas[0]);
+	}
 
-
+system("cls");
 }
 void definir_tamB(int linhas [1],int colunas [1]){
-    printf("Digite a quantidade de linhas da matriz B: ");
+  printf("Digite a quantidade de linhas da matriz B: ");
     scanf("%d", &linhas[0]);
+    
+    while(linhas[0]<1||linhas[0]>50)
+	{
+		printf("Insira um valor no intervalo de 1 a 50: ");
+		scanf("%d", &linhas[0]);
+	}
     printf("Digite a quantidade de colunas da matriz B: ");
     scanf("%d", &colunas[0]);
+    
+    while(colunas[0]<1||colunas[0]>50)
+	{
+		printf("Insira um valor no intervalo de 1 a 50: ");
+		scanf("%d", &colunas[0]);
+	}
 
-
+system("cls");
 }
 void preenchiemto_definido (float A[50][50],int linhas[1],int colunas[1]){
     int i,j;
@@ -90,6 +117,7 @@ void preenchiemto_definido (float A[50][50],int linhas[1],int colunas[1]){
             scanf("%f",&A[i][j]);
         }
     }
+    system("cls");
 }
 void preenchimento_aleatorio (float B[50][50],int linha,int coluna ){
 
@@ -107,9 +135,10 @@ void preenchimento_aleatorio (float B[50][50],int linha,int coluna ){
         }
     }
 
-
+system("cls");
 }
-void imprimir_menu(void){
+int interface(void){
+	int x;
     printf("\t\tPROGRAMA DE MANIPULACAO DE MATRIZES\n"
            "(1) Definir o tamanho da matriz A\n"
            "(2) Definir o tamanho da matriz B\n"
@@ -123,10 +152,20 @@ void imprimir_menu(void){
            "(10) Imprimir matriz A\n"
            "(11) Imprimir matriz B\n"
            "(12) Imprimir matriz C\n"
-           "(13) Sair\n");
-
+           "(13) Ler a matriz A de um arquivo\n"
+           "(14) Ler a matriz B de um arquivo\n"
+           "(15) Escrever a matriz C em um arquivo\n"
+           "(16) Sair\n"
+		   "digite sua operacao: ");
+	scanf("%d", &x);	   
+	while(x<1 || x>16)
+		{
+			printf("escolha uma operacao valida: ");
+			scanf("%d", &x);
+		}
+	return x;
 }
-void mostrar(float A[50][50], int linha[1], int coluna[1]){
+void imprimir(float A[50][50], int linha[1], int coluna[1]){
 	int i,j;
 	for(i=0;i<linha[0];i++)
 	{
@@ -138,25 +177,66 @@ void mostrar(float A[50][50], int linha[1], int coluna[1]){
 }
 
 main(){
-    int i, j;
+    int i, j,x=0;
     float matA [50][50];
     float matB [50][50];
     float matC [50][50];
     int linhaA[1], colunaA[1], linhaB[1], colunaB[1], linhaC[1], colunaC[1];
     
-    definir_tamA(linhaA,colunaA);
-    definir_tamB(linhaB,colunaB);
+    while(x!=16)
+	{
+		x=interface();
+		
+		switch(x)
+		{
+			case 1:
+				definir_tamA(linhaA,colunaA);
+				break;
+			case 2:
+				definir_tamB(linhaB,colunaB);
+				break;
+			case 3:
+				preenchimento_aleatorio (matA, linhaA, colunaA );
+				break;
+			case 4:
+				preenchimento_aleatorio (matB, linhaB, colunaB );
+				break;
+			case 5:
+				preenchiemto_definido(matA, linhaA,colunaA);
+				break;
+			case 6:
+				preenchiemto_definido(matB, linhaB,colunaB);
+				break;
+			case 7:
+				somar(matA, matB, matC, linhaA, linhaB, colunaA, colunaB, linhaC, colunaC);
+				break;
+			case 8:
+				subtrair(matA, matB, matC, linhaA, linhaB, colunaA, colunaB, linhaC, colunaC);
+				break;
+			case 9:
+				multiplicar(matA, matB, matC, linhaA, linhaB, colunaA, colunaB, linhaC, colunaC);
+				break;
+			case 10:
+				imprimir(matA, linhaA,colunaA);
+				break;
+			case 11:
+				imprimir(matB, linhaB,colunaB);
+				break;
+			case 12:
+				imprimir(matC, linhaC,colunaC);
+				break;
+			case 13:
+				
+				break;
+			case 14:
+				
+				break;
+			case 15:
+				
+				break;
+						
+		}
+	}
     
-	preenchiemto_definido(matA, linhaA,colunaA);
-	preenchiemto_definido(matB, linhaB,colunaB);
-	
-	mostrar(matA,linhaA, colunaA);
-	printf("\n");
-	mostrar(matB,linhaB, colunaB);
-	printf("\n");
-	
-	multiplicar(matA, matB, matC, linhaA, linhaB, colunaA, colunaB, linhaC, colunaC);
-	
-	
-	mostrar(matC, linhaC,colunaC);
+    
 }
