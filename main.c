@@ -212,7 +212,7 @@ void preenchiemto_definido (float A[50][50],int linhas,int colunas){
 
         for(j=0;j<colunas;j++){
 
-            printf("Digite o valor do elemento da matriz na posicao [%d][%d]\n",i,j);
+            printf("Digite o valor do elemento da matriz na posicao %dx%d\n",i+1,j+1);
 
             scanf("%f",&A[i][j]);
 
