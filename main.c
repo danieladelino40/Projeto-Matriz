@@ -1,5 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+void salvar_matriz(float matriz[50][50], int linha, int coluna){
+	
+	FILE *arquivo;
+	char end[100];
+	int i, j;
+	
+	printf("digite o endereço onde deseja salvar o arquivo: ");
+	scanf("%s", &end);
+	
+	arquivo = fopen(end,"w");
+	if(arquivo == NULL)
+	{
+    printf("nao abriu o arquivo\n");
+    exit(0);
+    }
+    
+    for(i=0; i<linha; i++)
+	{
+    	for(j=0; j<coluna; j++)
+		{
+      		fprintf(arquivo,"%f ", matriz[i][j]);
+    	}
+    fprintf(arquivo,"\n");
+    }
+	fclose(arquivo);
+}
 
 void multiplicar(float A[50][50],float B[50][50],float C[50][50], int nlA, int nlB, int ncA, int ncB,int *nlC,int *ncC){
 
@@ -127,7 +155,6 @@ void somar(float A[50][50],float B[50][50],float C[50][50], int nlA, int nlB, in
     system("cls");
 
 }
-
 void definir_tamA(int *linhas,int *colunas){
 
     printf("Digite a quantidade de linhas da matriz A: ");
@@ -164,8 +191,6 @@ void definir_tamA(int *linhas,int *colunas){
 system("cls");
 
 }
-
-
 void definir_tamB(int *linhas ,int *colunas){
 
   printf("Digite a quantidade de linhas da matriz B: ");
@@ -202,7 +227,6 @@ void definir_tamB(int *linhas ,int *colunas){
 system("cls");
 
 }
-
 void preenchiemto_definido (float A[50][50],int linhas,int colunas){
 
     int i,j;
@@ -223,7 +247,6 @@ void preenchiemto_definido (float A[50][50],int linhas,int colunas){
     system("cls");
 
 }
-
 void preenchimento_aleatorio (float B[50][50],int linha,int coluna ){
 
 
@@ -250,7 +273,6 @@ void preenchimento_aleatorio (float B[50][50],int linha,int coluna ){
     }
 system("cls");
 }
-
 int interface(void){
 
     int x;
@@ -306,7 +328,6 @@ int interface(void){
     return x;
 
 }
-
 void imprimir(float A[50][50], int linha, int coluna){
 
     int i,j;
@@ -330,10 +351,9 @@ system("pause");
 system("cls");
 }
 
-
 main(){
 
-    int i, j,x=0;
+    int x=0;
 
     float matA [50][50];
 
@@ -439,7 +459,8 @@ main(){
 
             case 15:
 
-
+				salvar_matriz(matC, linhaC, colunaC);
+				
                 break;
 
 
