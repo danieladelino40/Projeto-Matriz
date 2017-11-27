@@ -1,8 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define TAM 50
+#define TAN 51
 
-void salvar_matriz(float matriz[50][50], int linha, int coluna){
+
+
+void obter_matriz(float matriz[TAM][TAN], int *linha, int *coluna){
+	
+	FILE *arquivo;
+	char end[100];
+	
+	printf("digite o endereço onde deseja obter o arquivo: ");
+	scanf("%s", &end);
+	
+	arquivo = fopen(end,"rb");
+	if(arquivo == NULL)
+	{
+    printf("nao abriu o arquivo\n");
+    exit(0);
+    }
+    
+    fread(matriz, sizeof(float), TAM*TAN, arquivo);
+   	  
+	fclose(arquivo);
+	
+	*linha = matriz[0][TAN];
+	*coluna = matriz[1][TAN];
+
+}
+
+void salvar_matriz(float matriz[TAM][TAN], int linha, int coluna){
 	
 	FILE *arquivo;
 	char end[100];
@@ -11,25 +39,23 @@ void salvar_matriz(float matriz[50][50], int linha, int coluna){
 	printf("digite o endereço onde deseja salvar o arquivo: ");
 	scanf("%s", &end);
 	
-	arquivo = fopen(end,"w");
+	arquivo = fopen(end,"wb");
 	if(arquivo == NULL)
 	{
     printf("nao abriu o arquivo\n");
     exit(0);
     }
     
-    for(i=0; i<linha; i++)
-	{
-    	for(j=0; j<coluna; j++)
-		{
-      		fprintf(arquivo,"%f ", matriz[i][j]);
-    	}
-    fprintf(arquivo,"\n");
-    }
+    matriz[0][TAN] = (float)linha;
+    matriz[1][TAN] = (float)coluna;
+    
+    fwrite(matriz, sizeof(float),TAM*TAN, arquivo);
+    
+    
 	fclose(arquivo);
 }
 
-void multiplicar(float A[50][50],float B[50][50],float C[50][50], int nlA, int nlB, int ncA, int ncB,int *nlC,int *ncC){
+void multiplicar(float A[TAM][TAN],float B[TAM][TAN],float C[TAM][TAN], int nlA, int nlB, int ncA, int ncB,int *nlC,int *ncC){
 
     int i,j,k;
 
@@ -86,7 +112,7 @@ void multiplicar(float A[50][50],float B[50][50],float C[50][50], int nlA, int n
     system("cls");
 
 }
-void subtrair(float A[50][50],float B[50][50],float C[50][50], int nlA, int nlB, int ncA, int ncB,int *nlC,int *ncC){
+void subtrair(float A[TAM][TAN],float B[TAM][TAN],float C[TAM][TAN], int nlA, int nlB, int ncA, int ncB,int *nlC,int *ncC){
 
     int i,j;
 
@@ -121,7 +147,7 @@ void subtrair(float A[50][50],float B[50][50],float C[50][50], int nlA, int nlB,
 
 }
 
-void somar(float A[50][50],float B[50][50],float C[50][50], int nlA, int nlB, int ncA, int ncB,int *nlC,int *ncC){
+void somar(float A[TAM][TAN],float B[TAM][TAN],float C[TAM][TAN], int nlA, int nlB, int ncA, int ncB,int *nlC,int *ncC){
 
     int i,j;
 
@@ -227,7 +253,7 @@ void definir_tamB(int *linhas ,int *colunas){
 system("cls");
 
 }
-void preenchiemto_definido (float A[50][50],int linhas,int colunas){
+void preenchiemto_definido (float A[TAM][TAN],int linhas,int colunas){
 
     int i,j;
 
@@ -247,7 +273,7 @@ void preenchiemto_definido (float A[50][50],int linhas,int colunas){
     system("cls");
 
 }
-void preenchimento_aleatorio (float B[50][50],int linha,int coluna ){
+void preenchimento_aleatorio (float B[TAM][TAN],int linha,int coluna ){
 
 
     float menor,maior;
@@ -328,7 +354,7 @@ int interface(void){
     return x;
 
 }
-void imprimir(float A[50][50], int linha, int coluna){
+void imprimir(float A[TAM][TAN], int linha, int coluna){
 
     int i,j;
 
@@ -355,11 +381,11 @@ main(){
 
     int x=0;
 
-    float matA [50][50];
+    float matA [TAM][TAN];
 
-    float matB [50][50];
+    float matB [TAM][TAN];
 
-    float matC [50][50];
+    float matC [TAM][TAN];
 
     int linhaA, colunaA, linhaB, colunaB, linhaC, colunaC;
 
@@ -449,11 +475,13 @@ main(){
 
             case 13:
 
+				obter_matriz(matA, &linhaA, &colunaA);
 
                 break;
 
             case 14:
 
+                 obter_matriz(matB, &linhaB, &colunaB);
 
                 break;
 
