@@ -2,15 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 #include "funcoes.h"
+#define TAM 50
+#define TAN 50
 main(){
 
     int x=0;
 
-    float matA [50][51];
+    float matA [TAM][TAN];
 
-    float matB [50][51];
+    float matB [TAM][TAN];
 
-    float matC [50][51];
+    float matC [TAM][TAN];
 
     int linhaA, colunaA, linhaB, colunaB, linhaC, colunaC;
 
