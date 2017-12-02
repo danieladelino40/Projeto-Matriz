@@ -1,27 +1,27 @@
 #ifndef FUNCOES_H
 #define FUNCOES_H
 
-#define TAM 50
-#define TAN 51
+#define TAM 60
+#define TAN 60
 /**
- * @brief obter_matriz Fun√ß√£o que ir√° obter a matriz A ou B oriunda de um arquivo indicado pelo usu√°rio
- * @param matriz Dado que ir√° armazenar a matriz A ou B oriunda do arquivo
- * @param linha Dado que ir√° receber a quantidade de linhas da matriz A ou B oriunda de um arquivo
- * @param coluna Dado que ir√° receber a quantidade de colunas da matriz A ou B oriunda de um arquivo
+ * @brief obter_matriz FunÁ„o que ir· obter a matriz A ou B oriunda de um arquivo indicado pelo usu·rio
+ * @param matriz Dado que ir· armazenar a matriz A ou B oriunda do arquivo
+ * @param linha Dado que ir· receber a quantidade de linhas da matriz A ou B oriunda de um arquivo
+ * @param coluna Dado que ir· receber a quantidade de colunas da matriz A ou B oriunda de um arquivo
  */
 void obter_matriz(float matriz[TAM][TAN], int *linha, int *coluna);
 /**
- * @brief salvar_matriz Fun√ß√£o que ir√° realizar o armazenamento da matriz resultante(matriz C) em um arquivo txt de acordo com uma das opera√ß√µes matem√°ticas entre as matrizes selecionada pelo usu√°rio
- * @param matriz Dado que ir√° armazenar a matriz C (resultante)
- * @param linha Dado que ir√° receber a quantidade de linhas da matriz C
- * @param coluna Dado que ir√° receber a quantidade de colunas da matriz C
+ * @brief salvar_matriz FunÁ„o que ir· realizar o armazenamento da matriz resultante(matriz C) em um arquivo txt de acordo com uma das operaÁıes matem·ticas entre as matrizes selecionada pelo usu·rio
+ * @param matriz Dado que ir· armazenar a matriz C (resultante)
+ * @param linha Dado que ir· receber a quantidade de linhas da matriz C
+ * @param coluna Dado que ir· receber a quantidade de colunas da matriz C
  */
 void salvar_matriz(float matriz[TAM][TAN], int linha, int coluna);
 /**
- * @brief multiplicar Fun√ß√£o para realizar o produto das matrizes A e B e guardar o resultado na matriz C
- * @param A Dado no qual ser√° gravado a matriz A para reliza√ß√£o do c√°lculo
- * @param B Dado no qual ser√° gravado a matriz B para reliza√ß√£o do c√°lculo
- * @param C Dado no qual ser√° gravado a matriz C que ser√° resultante da opera√ß√£o do c√°lculo
+ * @brief multiplicar FunÁ„o para realizar o produto das matrizes A e B e guardar o resultado na matriz C
+ * @param A Dado no qual ser· gravado a matriz A para relizaÁ„o do c·lculo
+ * @param B Dado no qual ser· gravado a matriz B para relizaÁ„o do c·lculo
+ * @param C Dado no qual ser· gravado a matriz C que ser· resultante da operaÁ„o do c·lculo
  * @param nlA Dado da quantidade de linhas da matriz A
  * @param nlB Dado da quantidade de linhas da matriz B
  * @param ncA Dado da quantidade de colunas da matriz A
@@ -31,10 +31,10 @@ void salvar_matriz(float matriz[TAM][TAN], int linha, int coluna);
  */
 void multiplicar(float A[TAM][TAN],float B[TAM][TAN],float C[TAM][TAN], int nlA, int nlB, int ncA, int ncB,int *nlC,int *ncC);
 /**
- * @brief subtrair Fun√ß√£o para realizar a subtra√ß√£o das matrizes A e B e guardar o resultado na matriz C
- * @param A Dado no qual ser√° gravado a matriz A para reliza√ß√£o do c√°lculo
- * @param B Dado no qual ser√° gravado a matriz B para reliza√ß√£o do c√°lculo
- * @param C Dado no qual ser√° gravado a matriz C que ser√° resultante da opera√ß√£o do c√°lculo
+ * @brief subtrair FunÁ„o para realizar a subtraÁ„o das matrizes A e B e guardar o resultado na matriz C
+ * @param A Dado no qual ser· gravado a matriz A para relizaÁ„o do c·lculo
+ * @param B Dado no qual ser· gravado a matriz B para relizaÁ„o do c·lculo
+ * @param C Dado no qual ser· gravado a matriz C que ser· resultante da operaÁ„o do c·lculo
  * @param nlA Dado da quantidade de linhas da matriz A
  * @param nlB Dado da quantidade de linhas da matriz B
  * @param ncA Dado da quantidade de colunas da matriz A
@@ -44,10 +44,10 @@ void multiplicar(float A[TAM][TAN],float B[TAM][TAN],float C[TAM][TAN], int nlA,
  */
 void subtrair(float A[TAM][TAN],float B[TAM][TAN],float C[TAM][TAN], int nlA, int nlB, int ncA, int ncB,int *nlC,int *ncC);
 /**
- * @brief somar  Fun√ß√£o para realizar a adi√ß√£o das matrizes A e B e guardar o resultado na matriz C
- * @param A Dado no qual ser√° gravado a matriz A para reliza√ß√£o do c√°lculo
- * @param B Dado no qual ser√° gravado a matriz B para reliza√ß√£o do c√°lculo
- * @param C Dado no qual ser√° gravado a matriz C que ser√° resultante da opera√ß√£o do c√°lculo
+ * @brief somar  FunÁ„o para realizar a adiÁ„o das matrizes A e B e guardar o resultado na matriz C
+ * @param A Dado no qual ser· gravado a matriz A para relizaÁ„o do c·lculo
+ * @param B Dado no qual ser· gravado a matriz B para relizaÁ„o do c·lculo
+ * @param C Dado no qual ser· gravado a matriz C que ser· resultante da operaÁ„o do c·lculo
  * @param nlA Dado da quantidade de linhas da matriz A
  * @param nlB Dado da quantidade de linhas da matriz B
  * @param ncA Dado da quantidade de colunas da matriz A
@@ -57,42 +57,43 @@ void subtrair(float A[TAM][TAN],float B[TAM][TAN],float C[TAM][TAN], int nlA, in
  */
 void somar(float A[TAM][TAN],float B[TAM][TAN],float C[TAM][TAN], int nlA, int nlB, int ncA, int ncB,int *nlC,int *ncC);
 /**
- * @brief definir_tamA Fun√ß√£o usada para definir as dimens√µes da matriz A
- * @param linhas Dado que ir√° receber a quantidade de linhas da matriz A
- * @param colunas Dado que ir√° receber a quantidade de linhas da matriz A
+ * @brief definir_tamA FunÁ„o usada para definir as dimensıes da matriz A
+ * @param linhas Dado que ir· receber a quantidade de linhas da matriz A
+ * @param colunas Dado que ir· receber a quantidade de linhas da matriz A
  */
 void definir_tamA(int *linhas,int *colunas);
 /**
- * @brief definir_tamB Fun√ß√£o usada para definir as dimens√µes da matriz B
- * @param linhas Dado que ir√° receber a quantidade de linhas da matriz B
- * @param colunas Dado que ir√° receber a quantidade de linhas da matriz B
+ * @brief definir_tamB FunÁ„o usada para definir as dimensıes da matriz B
+ * @param linhas Dado que ir· receber a quantidade de linhas da matriz B
+ * @param colunas Dado que ir· receber a quantidade de linhas da matriz B
  */
 void definir_tamB(int *linhas ,int *colunas);
 /**
- * @brief preenchiemto_definido Fun√ß√£o que ir√° realizar o preenchimento de cada elemento da matriz A ou B de acordo com as escolhas do usu√°rio
- * @param A Dado onde ser√° armazenado a matriz A ou B com seus respectivos elementos
- * @param linhas Dado que ir√° receber a quantidade de linhas da matriz A ou B
- * @param colunas Dado que ir√° receber a quantidade de colunas da matriz A ou B
+ * @brief preenchiemto_definido FunÁ„o que ir· realizar o preenchimento de cada elemento da matriz A ou B de acordo com as escolhas do usu·rio
+ * @param A Dado onde ser· armazenado a matriz A ou B com seus respectivos elementos
+ * @param linhas Dado que ir· receber a quantidade de linhas da matriz A ou B
+ * @param colunas Dado que ir· receber a quantidade de colunas da matriz A ou B
  */
 void preenchiemto_definido (float A[TAM][TAN],int linhas,int colunas);
 /**
- * @brief preenchimento_aleatorio Fun√ß√£o para realizar o preenchimento aleat√≥rio da matriz A ou B de acordo com o intervalo escolhido pelo usu√°rio
- * @param B Dado que ir√° receber a matriz A ou B com seus respectivos elementos definidos de maneira aleat√≥ria
- * @param linha Dado que ir√° receber a quantidade de linhas da matriz A ou B
- * @param coluna Dado que ir√° receber a quantidade de colunas da matriz A ou B
+ * @brief preenchimento_aleatorio FunÁ„o para realizar o preenchimento aleatÛrio da matriz A ou B de acordo com o intervalo escolhido pelo usu·rio
+ * @param B Dado que ir· receber a matriz A ou B com seus respectivos elementos definidos de maneira aleatÛria
+ * @param linha Dado que ir· receber a quantidade de linhas da matriz A ou B
+ * @param coluna Dado que ir· receber a quantidade de colunas da matriz A ou B
  */
 void preenchimento_aleatorio (float B[TAM][TAN],int linha,int coluna );
 /**
- * @brief interface Fun√ß√£o que exibe as op√ß√µes de intera√ß√£o com o usu√°rio e o programa
- * @return retrona o valor de X que ser√° utilizado nas escolhas das op√ß√µes
+ * @brief interface FunÁ„o que exibe as opÁıes de interaÁ„o com o usu·rio e o programa
+ * @return retrona o valor de X que ser· utilizado nas escolhas das opÁıes
  */
 int interface(void);
 /**
- * @brief imprimir Fun√ß√£o utilizada para imprimir uma das 3 matrizes A, B ou C
- * @param A Dado que ir√° receber a matriz A, B ou C
- * @param linha Dado que ir√° receber a quantidade de linhas da matriz A, B ou C
- * @param coluna Dado que ir√° receber a quantidade de colunas da matriz A, B ou C
+ * @brief imprimir FunÁ„o utilizada para imprimir uma das 3 matrizes A, B ou C
+ * @param A Dado que ir· receber a matriz A, B ou C
+ * @param linha Dado que ir· receber a quantidade de linhas da matriz A, B ou C
+ * @param coluna Dado que ir· receber a quantidade de colunas da matriz A, B ou C
  */
 void imprimir(float A[TAM][TAN], int linha, int coluna);
 
 #endif
+
