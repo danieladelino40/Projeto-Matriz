@@ -1,4 +1,4 @@
-﻿#include "funcoes.h"
+#include "funcoes.h"
 #include <time.h>
 #include <stdio.h>
 #include<stdlib.h>
@@ -8,90 +8,92 @@
 
 
 void obter_matriz(float matriz[TAM][TAN], int *linha, int *coluna){
-	
-	FILE *f;
-	char end[100];
-	int i, j;
-	char teste;
-	int qtdEsp=0, qtdQue=0, qtdLin=0, qtdCol=0;
-	
-	printf("digite o endereço onde deseja obter o arquivo: ");
-	scanf("%s", &end);
-	
-	f = fopen(end,"r");
-	if(f == NULL)
-	{
+
+    FILE *f;
+    char end[100];
+    int i, j;
+    char teste;
+    int qtdEsp=0, qtdQue=0, qtdLin=0, qtdCol=0;
+
+    printf("digite o endereço onde deseja obter o arquivo: ");
+    scanf("%s", &end);
+
+    f = fopen(end,"r");
+    if(f == NULL)
+    {
     printf("nao abriu o arquivo\n");
     exit(0);
     }
-    
+
     teste = fgetc(f);
 
 while(teste != EOF)
-	{
-		if(teste==' ')
-		{
-			qtdEsp = qtdEsp + 1;
-		}
-		if(teste=='\n')
-		{
-			qtdQue = qtdQue+1;
-		}
-		teste = fgetc(f);
-	}
-	qtdLin = qtdQue + 1;
-	qtdCol = (qtdEsp + qtdLin)/qtdLin;
-   	
-   	rewind(f);
-   	
-   	for(i=0;i<qtdLin;i++)
-	{
-		for(j=0;j<qtdCol;j++)
-		{
-			fscanf(f,"%f",&matriz[i][j]);
-		}
-	}
-	
-	*linha = qtdLin;
-	*coluna = qtdCol;
-	
-	  
-	fclose(f);
+    {
+        if(teste==' ')
+        {
+            qtdEsp = qtdEsp + 1;
+        }
+        if(teste=='\n')
+        {
+            qtdQue = qtdQue+1;
+        }
+        teste = fgetc(f);
+    }
+    qtdLin = qtdQue + 1;
+    qtdCol = (qtdEsp + qtdLin)/qtdLin;
+
+    rewind(f);
+
+    for(i=0;i<qtdLin;i++)
+    {
+        for(j=0;j<qtdCol;j++)
+        {
+            fscanf(f,"%f",&matriz[i][j]);
+        }
+    }
+
+    *linha = qtdLin;
+    *coluna = qtdCol;
+
+
+    fclose(f);
+    system("cls");
 }
 
-void salvar_matriz(float matriz[50][50], int linha, int coluna){
- 	
- 	FILE *arquivo;
- 	char end[100];
- 	int i, j;
- 	
- 	printf("digite o endereço onde deseja salvar o arquivo: ");
- 	scanf("%s", &end);
- 	
- 	arquivo = fopen(end,"w");
- 	if(arquivo == NULL)
- 	{
+void salvar_matriz(float matriz[TAM][TAN], int linha, int coluna){
+
+    FILE *arquivo;
+    char end[100];
+    int i, j;
+
+    printf("digite o endereço onde deseja salvar o arquivo: ");
+    scanf("%s", &end);
+
+    arquivo = fopen(end,"w");
+    if(arquivo == NULL)
+    {
      printf("nao abriu o arquivo\n");
      exit(0);
      }
-     
+
     for(i=0; i<linha; i++)
- 	{
-     	for(j=0; j<coluna; j++)
- 		{
- 			if(j!=(coluna-1))
-			{
-      		fprintf(arquivo,"%f ", matriz[i][j]);
-      		}
-    		else
-			{
-			fprintf(arquivo,"%f",matriz[i][j]);
-			}  		
-     	}
-    	if(i!=(linha-1))
-     	fprintf(arquivo,"\n");
+    {
+        for(j=0; j<coluna; j++)
+        {
+            if(j!=(coluna-1))
+            {
+            fprintf(arquivo,"%f ", matriz[i][j]);
+            }
+            else
+            {
+            fprintf(arquivo,"%f",matriz[i][j]);
+            }
+        }
+        if(i!=(linha-1))
+        fprintf(arquivo,"\n");
      }
- 	fclose(arquivo);
+    fclose(arquivo);
+    system("cls");
  }
 
 
@@ -146,10 +148,11 @@ void multiplicar(float A[TAM][TAN],float B[TAM][TAN],float C[TAM][TAN], int nlA,
 
     }
 
-
-    }
-
     system("cls");
+    }else
+        printf("não foi possível multiplicar a matriz");
+
+
 
 }
 void subtrair(float A[TAM][TAN],float B[TAM][TAN],float C[TAM][TAN], int nlA, int nlB, int ncA, int ncB,int *nlC,int *ncC){
